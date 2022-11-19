@@ -35,8 +35,8 @@ resource "random_password" "main" {
   special = false
 }
 
-resource "aws_ssm_parameter" "db_endpoint" {
-  name  = "/${local.name}/postgres/endpoint"
+resource "aws_ssm_parameter" "db_address" {
+  name  = "/${local.name}/postgres/address"
   type  = "String"
   value = aws_db_instance.main.endpoint
 }

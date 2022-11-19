@@ -15,7 +15,7 @@ resource "aws_iam_role_policy_attachment" "s3" {
 
 resource "aws_iam_role_policy" "main" {
   role   = aws_iam_role.main.name
-  policy = data.terraform_remote_state.s3.outputs.s3-main.iam_policy_rw
+  policy = data.aws_iam_policy_document.main.json
 }
 
 data "aws_iam_policy_document" "main" {

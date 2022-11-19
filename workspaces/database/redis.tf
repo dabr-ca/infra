@@ -21,6 +21,6 @@ resource "aws_elasticache_parameter_group" "main" {
 
 resource "aws_ssm_parameter" "redis_endpoint" {
   name  = "/${local.name}/redis/nodes"
-  type  = "String"
-  value = aws_elasticache_cluster.main.cache_nodes
+  type  = "StringList"
+  value = join(",", aws_elasticache_cluster.main.cache_nodes)
 }

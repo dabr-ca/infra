@@ -12,7 +12,6 @@ resource "aws_instance" "main" {
   vpc_security_group_ids = [
     data.terraform_remote_state.vpc.outputs.sg_ids.default,
     data.terraform_remote_state.vpc.outputs.sg_ids.ssh,
-    data.terraform_remote_state.vpc.outputs.sg_ids.web,
   ]
 
   root_block_device {

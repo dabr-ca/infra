@@ -19,9 +19,8 @@ resource "aws_elasticache_parameter_group" "main" {
   family = "redis7"
 }
 
-# FIXME: export proper Redis info
-#resource "aws_ssm_parameter" "redis_endpoint" {
-#  name  = "/${local.name}/redis/nodes"
-#  type  = "StringList"
-#  value = join(",", aws_elasticache_cluster.main.cache_nodes)
-#}
+resource "aws_ssm_parameter" "redis_endpoint" {
+  name  = "/${local.name}/redis/address"
+  type  = "String"
+  value = one(aws_elasticache_cluster.main.cache_nodes)["address"]
+}

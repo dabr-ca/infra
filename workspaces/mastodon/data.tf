@@ -25,5 +25,6 @@ data "aws_ami" "ubuntu" {
 
 data "aws_acm_certificate" "main" {
   domain      = "dabr.ca"
+  key_types   = ["EC_prime256v1"]
   most_recent = true
 }

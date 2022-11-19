@@ -36,19 +36,19 @@ resource "random_password" "main" {
 }
 
 resource "aws_ssm_parameter" "db_endpoint" {
-  name  = "/${local.name}/database/endpoint"
+  name  = "/${local.name}/postgres/endpoint"
   type  = "String"
   value = aws_db_instance.main.endpoint
 }
 
 resource "aws_ssm_parameter" "db_username" {
-  name  = "/${local.name}/database/username"
+  name  = "/${local.name}/postgres/username"
   type  = "String"
   value = local.db_username
 }
 
 resource "aws_ssm_parameter" "db_password" {
-  name  = "/${local.name}/database/password"
+  name  = "/${local.name}/postgres/password"
   type  = "SecureString"
   value = random_password.main.result
 }

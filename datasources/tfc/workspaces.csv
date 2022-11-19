@@ -1,4 +1,5 @@
 name,auto_apply,global_remote_state,modules
+database,true,false,
 mastodon,true,false,
 s3,true,false,s3
 tfc,true,false,

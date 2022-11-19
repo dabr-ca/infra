@@ -38,7 +38,7 @@ resource "random_password" "main" {
 resource "aws_ssm_parameter" "db_address" {
   name  = "/${local.name}/postgres/address"
   type  = "String"
-  value = aws_db_instance.main.endpoint
+  value = aws_db_instance.main.address
 }
 
 resource "aws_ssm_parameter" "db_username" {

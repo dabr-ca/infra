@@ -1,6 +1,6 @@
 resource "aws_lb" "main" {
-  name_prefix = local.name
-  subnets     = data.terraform_remote_state.vpc.outputs.subnet_ids.public[*]
+  name    = local.name
+  subnets = data.terraform_remote_state.vpc.outputs.subnet_ids.public[*]
 }
 
 resource "aws_lb_listener" "main_http" {
@@ -31,10 +31,10 @@ resource "aws_lb_listener" "main_https" {
 }
 
 resource "aws_lb_target_group" "main" {
-  name_prefix = local.name
-  port        = 3000
-  protocol    = "HTTP"
-  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
+  name     = local.name
+  port     = 3000
+  protocol = "HTTP"
+  vpc_id   = data.terraform_remote_state.vpc.outputs.vpc_id
 }
 
 resource "aws_lb_target_group_attachment" "main" {

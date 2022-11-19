@@ -30,6 +30,22 @@ resource "aws_instance" "main" {
   }
 }
 
+resource "aws_ebs_volume" "data" {
+  availability_zone = aws_instance.main.availability_zone
+  type              = "gp3"
+  size              = 2
+
+  tags = {
+    Name = "${local.name}-data"
+  }
+}
+
+resource "aws_volume_attachment" "data" {
+  instance_id = aws_instance.main.id
+  volume_id   = aws_ebs_volume.data.id
+  device_name = "/dev/sdf"
+}
+
 resource "aws_eip" "main" {
   instance = aws_instance.main.id
 }

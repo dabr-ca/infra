@@ -22,3 +22,8 @@ data "aws_ami" "ubuntu" {
     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-arm64-server-*"]
   }
 }
+
+data "aws_acm_certificate" "main" {
+  domain      = "dabr.ca"
+  most_recent = true
+}

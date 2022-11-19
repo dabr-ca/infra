@@ -1,0 +1,3 @@
+name,auto_apply,global_remote_state,modules
+tfc,true,false,
+vpc,true,true,vpc

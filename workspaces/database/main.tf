@@ -34,6 +34,12 @@ resource "random_password" "main" {
   special = false
 }
 
+resource "aws_ssm_parameter" "db_endpoint" {
+  name  = "/${local.name}/database/endpoint"
+  type  = "String"
+  value = aws_db_instance.main.endpoint
+}
+
 resource "aws_ssm_parameter" "db_username" {
   name  = "/${local.name}/database/username"
   type  = "String"

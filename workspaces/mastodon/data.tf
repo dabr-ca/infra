@@ -1,3 +1,7 @@
+data "aws_region" "current" {}
+
+data "aws_caller_identity" "current" {}
+
 data "terraform_remote_state" "vpc" {
   backend = "remote"
 
@@ -5,6 +9,17 @@ data "terraform_remote_state" "vpc" {
     organization = "dabr-ca"
     workspaces = {
       name = "vpc"
+    }
+  }
+}
+
+data "terraform_remote_state" "s3" {
+  backend = "remote"
+
+  config = {
+    organization = "dabr-ca"
+    workspaces = {
+      name = "s3"
     }
   }
 }
@@ -27,4 +42,15 @@ data "aws_acm_certificate" "main" {
   domain      = "dabr.ca"
   key_types   = ["EC_prime256v1"]
   most_recent = true
+}
+
+data "aws_iam_policy_document" "ec2-assume-role" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
+  }
 }

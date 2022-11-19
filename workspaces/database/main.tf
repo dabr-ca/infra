@@ -7,6 +7,7 @@ resource "aws_db_instance" "main" {
   engine                 = "postgres"
   engine_version         = "13.7" # default as of 2022-11
   parameter_group_name   = aws_db_parameter_group.main.name
+  identifier             = local.name
   db_name                = local.name
   instance_class         = "db.t4g.micro"
   storage_type           = "gp2" # https://github.com/hashicorp/terraform-provider-aws/issues/27702

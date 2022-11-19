@@ -1,6 +1,10 @@
 resource "aws_lb" "main" {
   name    = local.name
   subnets = data.terraform_remote_state.vpc.outputs.subnet_ids.public[*]
+  security_groups = [
+    data.terraform_remote_state.vpc.outputs.sg_ids.default,
+    data.terraform_remote_state.vpc.outputs.sg_ids.web,
+  ]
 }
 
 resource "aws_lb_listener" "main_http" {

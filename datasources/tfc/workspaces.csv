@@ -1,6 +1,6 @@
 name,auto_apply,global_remote_state,modules
 database,true,false,
-mastodon,true,false,
+mastodon,true,false,mastodon
 s3,true,true,s3
 tfc,true,false,
 vpc,true,true,vpc

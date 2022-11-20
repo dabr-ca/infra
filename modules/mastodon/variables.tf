@@ -38,3 +38,7 @@ variable "ec2_instance_type" {
 variable "ec2_key_name" {
   description = "Name of key pair to log into the EC2 instance."
 }
+
+variable "rds_instance_class" {
+  default = "db.t4g.micro"
+}

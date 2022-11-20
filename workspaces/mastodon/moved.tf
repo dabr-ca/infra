@@ -25,10 +25,6 @@ moved {
   to   = module.mastodon.aws_iam_instance_profile.main
 }
 moved {
-  from = aws_iam_role_policy_attachment.s3
-  to   = module.mastodon.aws_iam_role_policy_attachment.s3
-}
-moved {
   from = aws_iam_role_policy.main
   to   = module.mastodon.aws_iam_role_policy.main
 }

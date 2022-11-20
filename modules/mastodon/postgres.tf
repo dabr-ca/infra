@@ -1,6 +1,5 @@
 locals {
-  name        = "mastodon"
-  db_username = local.name
+  postgres_username = local.name
 }
 
 resource "aws_db_instance" "main" {
@@ -9,20 +8,20 @@ resource "aws_db_instance" "main" {
   parameter_group_name   = aws_db_parameter_group.main.name
   identifier             = local.name
   db_name                = local.name
-  instance_class         = "db.t4g.micro"
+  instance_class         = var.rds_instance_class
   storage_type           = "gp2" # https://github.com/hashicorp/terraform-provider-aws/issues/27702
   allocated_storage      = 20
   multi_az               = false
   db_subnet_group_name   = aws_db_subnet_group.main.name
-  vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.sg_ids.default]
+  vpc_security_group_ids = [aws_security_group.db.id]
 
-  username = local.db_username
-  password = random_password.main.result
+  username = local.postgres_username
+  password = random_password.postgres.result
 }
 
 resource "aws_db_subnet_group" "main" {
   name       = local.name
-  subnet_ids = data.terraform_remote_state.vpc.outputs.subnet_ids.private[*]
+  subnet_ids = var.private_subnet_ids
 }
 
 resource "aws_db_parameter_group" "main" {
@@ -30,25 +29,25 @@ resource "aws_db_parameter_group" "main" {
   family = "postgres13"
 }
 
-resource "random_password" "main" {
+resource "random_password" "postgres" {
   length  = 16
   special = false
 }
 
-resource "aws_ssm_parameter" "db_address" {
+resource "aws_ssm_parameter" "postgres_address" {
   name  = "/${local.name}/postgres/address"
   type  = "String"
   value = aws_db_instance.main.address
 }
 
-resource "aws_ssm_parameter" "db_username" {
+resource "aws_ssm_parameter" "postgres_username" {
   name  = "/${local.name}/postgres/username"
   type  = "String"
-  value = local.db_username
+  value = local.postgres_username
 }
 
-resource "aws_ssm_parameter" "db_password" {
+resource "aws_ssm_parameter" "postgres_password" {
   name  = "/${local.name}/postgres/password"
   type  = "SecureString"
-  value = random_password.main.result
+  value = random_password.postgres.result
 }

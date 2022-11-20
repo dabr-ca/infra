@@ -3,14 +3,20 @@ resource "aws_iam_role" "main" {
   assume_role_policy = data.aws_iam_policy_document.ec2-assume-role.json
 }
 
+data "aws_iam_policy_document" "ec2-assume-role" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
+  }
+}
+
 resource "aws_iam_instance_profile" "main" {
   name = aws_iam_role.main.name
   role = aws_iam_role.main.name
-}
-
-resource "aws_iam_role_policy_attachment" "s3" {
-  role       = aws_iam_role.main.name
-  policy_arn = data.terraform_remote_state.s3.outputs.s3-main.iam_policy_rw
 }
 
 resource "aws_iam_role_policy" "main" {
@@ -19,6 +25,25 @@ resource "aws_iam_role_policy" "main" {
 }
 
 data "aws_iam_policy_document" "main" {
+  # Allow accessing S3 bucket
+  statement {
+    actions = [
+      "s3:ListBucket",
+    ]
+    resources = [
+      aws_s3_bucket.main.arn,
+    ]
+  }
+  statement {
+    actions = [
+      "s3:GetObject",
+      "s3:PutObject",
+      "s3:DeleteObject",
+    ]
+    resources = [
+      "${aws_s3_bucket.main.arn}/*",
+    ]
+  }
   # Allow reading from parameter store
   # https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-access.html
   statement {

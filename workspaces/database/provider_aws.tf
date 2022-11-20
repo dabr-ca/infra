@@ -1,1 +1,0 @@
-../../snippets/provider_aws.tf

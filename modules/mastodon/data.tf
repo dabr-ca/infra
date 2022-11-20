@@ -15,9 +15,3 @@ data "aws_ami" "ubuntu" {
     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 }
-
-data "aws_acm_certificate" "main" {
-  domain      = var.domain
-  key_types   = ["EC_prime256v1"]
-  most_recent = true
-}

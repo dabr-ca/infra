@@ -4,7 +4,7 @@ variable "name" {
 }
 
 variable "domain" {
-  description = "Domain of the Mastodon instance. This domain points to ELB."
+  description = "Domain of the Mastodon instance. This domain points to ELB. The domain must exist in Route 53."
   type        = string
 }
 

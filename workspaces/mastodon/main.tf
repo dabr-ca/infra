@@ -1,5 +1,8 @@
 module "mastodon" {
   source = "../../modules/mastodon"
+  providers = {
+    aws.us-east-1 = aws.us-east-1
+  }
 
   domain             = "dabr.ca"
   files_domain       = "files.dabr.ca"

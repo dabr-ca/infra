@@ -1,3 +1,20 @@
+# main.tf
+moved {
+  from = aws_instance.main
+  to   = module.mastodon.aws_instance.main
+}
+moved {
+  from = aws_eip.main
+  to   = module.mastodon.aws_eip.main
+}
+moved {
+  from = aws_ebs_volume.data
+  to   = module.mastodon.aws_ebs_volume.data
+}
+moved {
+  from = aws_volume_attachment.data
+  to   = module.mastodon.aws_volume_attachment.data
+}
 # iam.tf
 moved {
   from = aws_iam_role.main

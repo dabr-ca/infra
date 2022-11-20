@@ -1,6 +1,7 @@
 resource "aws_cloudfront_distribution" "main" {
   aliases          = [var.files_domain]
   enabled          = true
+  http_version     = "http2and3"
   is_ipv6_enabled  = true
   price_class      = "PriceClass_All"
   retain_on_delete = true

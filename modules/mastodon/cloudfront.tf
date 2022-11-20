@@ -1,10 +1,11 @@
 resource "aws_cloudfront_distribution" "main" {
-  aliases          = [var.files_domain]
-  enabled          = true
-  http_version     = "http2and3"
-  is_ipv6_enabled  = true
-  price_class      = "PriceClass_All"
-  retain_on_delete = true
+  aliases             = [var.files_domain]
+  enabled             = true
+  http_version        = "http2and3"
+  is_ipv6_enabled     = true
+  price_class         = "PriceClass_All"
+  retain_on_delete    = true
+  wait_for_deployment = false
 
   default_cache_behavior {
     target_origin_id = aws_s3_bucket.main.bucket_regional_domain_name

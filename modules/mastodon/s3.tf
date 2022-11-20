@@ -15,3 +15,28 @@ resource "aws_s3_bucket_public_access_block" "main" {
   block_public_policy     = true
   restrict_public_buckets = true
 }
+
+resource "aws_s3_bucket_policy" "main" {
+  bucket = aws_s3_bucket.main.id
+  policy = data.aws_iam_policy_document.bucket_policy.json
+}
+
+resource "aws_cloudfront_origin_access_identity" "main" {}
+
+data "aws_iam_policy_document" "bucket_policy" {
+  # Allow CloudFront to read from the bucket
+  statement {
+    actions = [
+      "s3:GetObject"
+    ]
+    resources = [
+      "${aws_s3_bucket.main.arn}/*",
+    ]
+    principals {
+      type = "AWS"
+      identifiers = [
+        aws_cloudfront_origin_access_identity.main.iam_arn
+      ]
+    }
+  }
+}

@@ -2,6 +2,18 @@ data "aws_route53_zone" "main" {
   name = var.domain
 }
 
+resource "aws_route53_record" "web" {
+  zone_id = data.aws_route53_zone.main.id
+  name    = var.domain
+  type    = "A"
+
+  alias {
+    zone_id                = aws_lb.main.zone_id
+    name                   = aws_lb.main.dns_name
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "files" {
   for_each = toset(["A", "AAAA"])
 

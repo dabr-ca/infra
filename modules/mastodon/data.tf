@@ -2,28 +2,6 @@ data "aws_region" "current" {}
 
 data "aws_caller_identity" "current" {}
 
-data "terraform_remote_state" "vpc" {
-  backend = "remote"
-
-  config = {
-    organization = "dabr-ca"
-    workspaces = {
-      name = "vpc"
-    }
-  }
-}
-
-data "terraform_remote_state" "s3" {
-  backend = "remote"
-
-  config = {
-    organization = "dabr-ca"
-    workspaces = {
-      name = "s3"
-    }
-  }
-}
-
 data "aws_key_pair" "main" {
   key_name = var.ec2_key_name
 }

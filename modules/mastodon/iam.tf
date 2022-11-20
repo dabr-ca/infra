@@ -8,11 +8,6 @@ resource "aws_iam_instance_profile" "main" {
   role = aws_iam_role.main.name
 }
 
-resource "aws_iam_role_policy_attachment" "s3" {
-  role       = aws_iam_role.main.name
-  policy_arn = data.terraform_remote_state.s3.outputs.s3-main.iam_policy_rw
-}
-
 resource "aws_iam_role_policy" "main" {
   role   = aws_iam_role.main.name
   policy = data.aws_iam_policy_document.main.json

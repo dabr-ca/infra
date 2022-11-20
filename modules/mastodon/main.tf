@@ -9,10 +9,7 @@ resource "aws_instance" "main" {
   key_name             = data.aws_key_pair.main.key_name
   iam_instance_profile = aws_iam_instance_profile.main.name
 
-  vpc_security_group_ids = [
-    data.terraform_remote_state.vpc.outputs.sg_ids.default,
-    data.terraform_remote_state.vpc.outputs.sg_ids.ssh,
-  ]
+  vpc_security_group_ids = [aws_security_group.backend.id]
 
   root_block_device {
     volume_type = "gp3"

@@ -3,6 +3,17 @@ resource "aws_iam_role" "main" {
   assume_role_policy = data.aws_iam_policy_document.ec2-assume-role.json
 }
 
+data "aws_iam_policy_document" "ec2-assume-role" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
+  }
+}
+
 resource "aws_iam_instance_profile" "main" {
   name = aws_iam_role.main.name
   role = aws_iam_role.main.name

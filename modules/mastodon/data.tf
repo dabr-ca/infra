@@ -21,14 +21,3 @@ data "aws_acm_certificate" "main" {
   key_types   = ["EC_prime256v1"]
   most_recent = true
 }
-
-data "aws_iam_policy_document" "ec2-assume-role" {
-  statement {
-    actions = ["sts:AssumeRole"]
-
-    principals {
-      type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
-    }
-  }
-}

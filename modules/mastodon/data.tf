@@ -25,7 +25,7 @@ data "terraform_remote_state" "s3" {
 }
 
 data "aws_key_pair" "main" {
-  key_name = "wzyboy@tarball"
+  key_name = var.ec2_key_name
 }
 
 data "aws_ami" "ubuntu" {
@@ -39,7 +39,7 @@ data "aws_ami" "ubuntu" {
 }
 
 data "aws_acm_certificate" "main" {
-  domain      = "dabr.ca"
+  domain      = var.domain
   key_types   = ["EC_prime256v1"]
   most_recent = true
 }

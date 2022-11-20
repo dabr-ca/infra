@@ -1,6 +1,9 @@
-# The distribution.
+locals {
+  cloudfront_domain = "files.${var.domain}"
+}
+
 resource "aws_cloudfront_distribution" "main" {
-  aliases          = [var.domain]
+  aliases          = [var.files_domain]
   enabled          = true
   is_ipv6_enabled  = true
   price_class      = "PriceClass_All"

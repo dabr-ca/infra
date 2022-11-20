@@ -6,7 +6,7 @@ resource "aws_route53_record" "files" {
   for_each = toset(["A", "AAAA"])
 
   zone_id = aws_route53_zone.main.id
-  name    = "files.${var.domain}"
+  name    = var.files_domain
   type    = each.key
 
   alias {

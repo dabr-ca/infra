@@ -4,7 +4,12 @@ variable "name" {
 }
 
 variable "domain" {
-  description = "Domain of the Mastodon instance."
+  description = "Domain of the Mastodon instance. This domain points to ELB."
+  type        = string
+}
+
+variable "files_domain" {
+  description = "Domain for serving user-uploaded files. This domain points to CloudFront, whose origin is an S3 bucket."
   type        = string
 }
 

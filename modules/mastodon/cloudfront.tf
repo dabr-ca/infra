@@ -1,7 +1,3 @@
-locals {
-  cloudfront_domain = "files.${var.domain}"
-}
-
 resource "aws_cloudfront_distribution" "main" {
   aliases          = [var.files_domain]
   enabled          = true

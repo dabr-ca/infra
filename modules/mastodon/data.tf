@@ -15,3 +15,7 @@ data "aws_ami" "ubuntu" {
     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 }
+
+data "aws_route53_zone" "main" {
+  name = var.domain
+}

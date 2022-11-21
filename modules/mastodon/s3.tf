@@ -40,3 +40,9 @@ data "aws_iam_policy_document" "bucket_policy" {
     }
   }
 }
+
+resource "aws_ssm_parameter" "s3_bucket" {
+  name  = "/${local.name}/s3_bucket"
+  type  = "String"
+  value = aws_s3_bucket.main.bucket
+}

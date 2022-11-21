@@ -40,6 +40,12 @@ resource "aws_ssm_parameter" "postgres_address" {
   value = aws_db_instance.main.address
 }
 
+resource "aws_ssm_parameter" "postgres_name" {
+  name  = "/${local.name}/postgres/name"
+  type  = "String"
+  value = local.name
+}
+
 resource "aws_ssm_parameter" "postgres_username" {
   name  = "/${local.name}/postgres/username"
   type  = "String"

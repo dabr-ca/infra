@@ -46,3 +46,22 @@ resource "aws_volume_attachment" "data" {
 resource "aws_eip" "main" {
   instance = aws_instance.main.id
 }
+
+# Additional parameters that need to be populated manually
+resource "aws_ssm_parameter" "mastodon_secrets" {
+  for_each = toset([
+    "OTP_SECRET",
+    "SECRET_KEY_BASE",
+    "VAPID_PUBLIC_KEY",
+    "VAPID_PRIVATE_KEY",
+  ])
+
+  name        = "/${local.name}/secrets/${each.key}"
+  description = "https://docs.joinmastodon.org/admin/config/#secrets"
+  type        = "SecureString"
+  value       = "PLACEHOLDER"
+
+  lifecycle {
+    ignore_changes = [value]
+  }
+}

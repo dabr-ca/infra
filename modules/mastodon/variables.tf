@@ -4,7 +4,7 @@ variable "name" {
 }
 
 variable "domain" {
-  description = "Domain of the Mastodon instance. This domain points to ELB. The domain must exist in Route 53."
+  description = "Domain of the Mastodon instance. This domain points to ELB. The domain must already exist in Route 53."
   type        = string
 }
 
@@ -41,7 +41,7 @@ variable "ec2_instance_type" {
 }
 
 variable "ec2_key_name" {
-  description = "Name of key pair to log into the EC2 instance."
+  description = "Name of key pair to log into the EC2 instance. The key pair must already exist."
 }
 
 variable "rds_instance_class" {

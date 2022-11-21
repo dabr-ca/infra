@@ -68,14 +68,4 @@ data "aws_iam_policy_document" "main" {
       "*"
     ]
   }
-  # Allow sending emails
-  statement {
-    actions = [
-      "ses:SendEmail",
-      "ses:SendRawEmail",
-    ]
-    resources = [
-      "*"
-    ]
-  }
 }

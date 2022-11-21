@@ -42,3 +42,15 @@ resource "aws_lb_target_group_attachment" "main" {
   target_group_arn = aws_lb_target_group.main.arn
   target_id        = aws_instance.main.id
 }
+
+resource "aws_route53_record" "web" {
+  zone_id = data.aws_route53_zone.main.id
+  name    = var.domain
+  type    = "A"
+
+  alias {
+    zone_id                = aws_lb.main.zone_id
+    name                   = aws_lb.main.dns_name
+    evaluate_target_health = false
+  }
+}

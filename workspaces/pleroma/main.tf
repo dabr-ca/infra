@@ -2,8 +2,8 @@ locals {
   domain = "dabr.ca"
 }
 
-module "mastodon" {
-  source = "../../modules/mastodon"
+module "pleroma" {
+  source = "../../modules/pleroma"
   providers = {
     aws.us-east-1 = aws.us-east-1
   }

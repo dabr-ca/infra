@@ -17,11 +17,6 @@ module "pleroma" {
   ec2_key_name       = "wzyboy@tarball"
 }
 
-moved {
-  from = module.mastodon
-  to   = module.pleroma
-}
-
 # Use Google Domain's MX
 data "aws_route53_zone" "main" {
   name = local.domain

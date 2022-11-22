@@ -94,8 +94,8 @@ resource "aws_iam_access_key" "main" {
   user = aws_iam_user.main.name
 }
 
-resource "aws_ssm_parameter" "aws_access_key" {
-  name  = "/${local.name}/aws_access_key"
+resource "aws_ssm_parameter" "aws_access_key_id" {
+  name  = "/${local.name}/aws_access_key_id"
   type  = "String"
   value = aws_iam_access_key.main.id
 }

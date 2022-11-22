@@ -36,26 +36,3 @@ resource "aws_iam_user_policy" "ses" {
   user   = aws_iam_user.ses.name
   policy = data.aws_iam_policy_document.ses.json
 }
-
-data "aws_iam_policy_document" "ses" {
-  statement {
-    actions   = ["ses:SendRawEmail"]
-    resources = ["*"]
-  }
-}
-
-resource "aws_iam_access_key" "ses" {
-  user = aws_iam_user.ses.name
-}
-
-resource "aws_ssm_parameter" "ses_username" {
-  name  = "/${local.name}/ses/username"
-  type  = "String"
-  value = aws_iam_access_key.ses.id
-}
-
-resource "aws_ssm_parameter" "ses_password" {
-  name  = "/${local.name}/ses/password"
-  type  = "SecureString"
-  value = aws_iam_access_key.ses.ses_smtp_password_v4
-}

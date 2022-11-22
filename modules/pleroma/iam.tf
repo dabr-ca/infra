@@ -68,4 +68,13 @@ data "aws_iam_policy_document" "main" {
       "*"
     ]
   }
+  # Allow sending emails
+  # SednRawEmail is required by Swoosh
+  # https://hexdocs.pm/swoosh/Swoosh.Adapters.AmazonSES.html
+  statement {
+    actions = [
+      "ses:SendRawEmail"
+    ]
+    resources = ["*"]
+  }
 }

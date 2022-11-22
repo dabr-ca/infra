@@ -33,7 +33,7 @@ resource "aws_lb_listener" "main_https" {
 
 resource "aws_lb_target_group" "main" {
   name     = local.name
-  port     = 3000
+  port     = 4000
   protocol = "HTTP"
   vpc_id   = var.vpc_id
 }

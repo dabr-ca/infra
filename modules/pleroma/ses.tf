@@ -27,12 +27,3 @@ resource "aws_route53_record" "spf" {
   ttl     = 600
   records = ["v=spf1 include:amazonses.com -all"]
 }
-
-resource "aws_iam_user" "ses" {
-  name = "${local.name}-ses-smtp"
-}
-
-resource "aws_iam_user_policy" "ses" {
-  user   = aws_iam_user.ses.name
-  policy = data.aws_iam_policy_document.ses.json
-}

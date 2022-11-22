@@ -86,7 +86,7 @@ resource "aws_iam_user" "main" {
 }
 
 resource "aws_iam_user_policy" "main" {
-  user   = aws_iam_role.main.name
+  user   = aws_iam_user.main.name
   policy = data.aws_iam_policy_document.main.json
 }
 

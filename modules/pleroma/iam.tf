@@ -78,3 +78,30 @@ data "aws_iam_policy_document" "main" {
     resources = ["*"]
   }
 }
+
+# XXX: I can't get IAM instance role to work with ExAws
+# Use static access key for now
+resource "aws_iam_user" "main" {
+  name = local.name
+}
+
+resource "aws_iam_user_policy" "main" {
+  user   = aws_iam_role.main.name
+  policy = data.aws_iam_policy_document.main.json
+}
+
+resource "aws_iam_access_key" "main" {
+  user = aws_iam_user.main.name
+}
+
+resource "aws_ssm_parameter" "aws_access_key" {
+  name  = "/${local.name}/aws_access_key"
+  type  = "String"
+  value = aws_iam_access_key.main.id
+}
+
+resource "aws_ssm_parameter" "aws_secret_access_key" {
+  name  = "/${local.name}/aws_secret_access_key"
+  type  = "SecureString"
+  value = aws_iam_access_key.main.secret
+}

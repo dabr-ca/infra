@@ -2,8 +2,8 @@ locals {
   domain = "dabr.ca"
 }
 
-module "mastodon" {
-  source = "../../modules/mastodon"
+module "pleroma" {
+  source = "../../modules/pleroma"
   providers = {
     aws.us-east-1 = aws.us-east-1
   }
@@ -14,6 +14,11 @@ module "mastodon" {
   private_subnet_ids = data.terraform_remote_state.vpc.outputs.subnet_ids.private[*]
   public_subnet_ids  = data.terraform_remote_state.vpc.outputs.subnet_ids.public[*]
   ec2_key_name       = "wzyboy@tarball"
+}
+
+moved {
+  from = module.mastodon
+  to   = module.pleroma
 }
 
 # Use Google Domain's MX

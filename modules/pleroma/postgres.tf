@@ -1,5 +1,7 @@
 locals {
-  postgres_username = local.name
+  # AWS: DBName must begin with a letter and contain only alphanumeric characters
+  postgres_name     = "pleroma"
+  postgres_username = "pleroma"
 }
 
 resource "aws_db_instance" "main" {
@@ -7,7 +9,7 @@ resource "aws_db_instance" "main" {
   engine_version         = "13.7" # default as of 2022-11
   parameter_group_name   = aws_db_parameter_group.main.name
   identifier             = local.name
-  db_name                = local.name
+  db_name                = local.postgres_name
   instance_class         = var.rds_instance_class
   storage_type           = "gp2" # https://github.com/hashicorp/terraform-provider-aws/issues/27702
   allocated_storage      = 20
@@ -43,7 +45,7 @@ resource "aws_ssm_parameter" "postgres_address" {
 resource "aws_ssm_parameter" "postgres_name" {
   name  = "/${local.name}/postgres/name"
   type  = "String"
-  value = local.name
+  value = local.postgres_name
 }
 
 resource "aws_ssm_parameter" "postgres_username" {

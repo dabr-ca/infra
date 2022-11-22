@@ -32,3 +32,8 @@ resource "tfe_workspace" "workspaces" {
   }
   working_directory = "/workspaces/${each.key}"
 }
+
+moved {
+  from = tfe_workspace.workspaces["mastodon"]
+  to   = tfe_workspace.workspaces["pleroma"]
+}

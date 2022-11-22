@@ -1,10 +1,10 @@
 variable "name" {
   description = "Name of the service. It will be used to name EC2, ELB, and RDS instances."
-  default     = "mastodon"
+  default     = "pleroma"
 }
 
 variable "domain" {
-  description = "Domain of the Mastodon instance. This domain points to ELB. The domain must already exist in Route 53."
+  description = "Domain of the Pleroma instance. This domain points to ELB. The domain must already exist in Route 53."
   type        = string
 }
 

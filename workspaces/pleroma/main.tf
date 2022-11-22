@@ -8,6 +8,7 @@ module "pleroma" {
     aws.us-east-1 = aws.us-east-1
   }
 
+  name               = "dabr-ca"
   domain             = local.domain
   files_domain       = "files.${local.domain}"
   vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id

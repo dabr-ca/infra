@@ -23,4 +23,4 @@ Check [module README](./modules/pleroma/README.md) for details.
 
 ## Cost
 
-Most of the AWS resources are eligible for 12-month Free Tier, [after which cost is approximately 40 USD/mo](https://calculator.aws/#/estimate?id=45a11934bdf6900573ad46263707edfc2ad4d44c).
+Most of the AWS resources are eligible for 12-month Free Tier, [after which cost is approximately 500 USD/y](https://calculator.aws/#/estimate?id=45a11934bdf6900573ad46263707edfc2ad4d44c).

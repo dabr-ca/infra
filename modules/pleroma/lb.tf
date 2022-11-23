@@ -2,6 +2,12 @@ resource "aws_lb" "main" {
   name            = local.name
   subnets         = var.public_subnet_ids
   security_groups = [aws_security_group.lb.id]
+
+  access_logs {
+    enabled = true
+    bucket  = aws_s3_bucket.logs.bucket
+    prefix  = "elb"
+  }
 }
 
 resource "aws_lb_listener" "main_http" {

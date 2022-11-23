@@ -38,6 +38,11 @@ resource "aws_cloudfront_distribution" "main" {
     minimum_protocol_version = "TLSv1.2_2018"
     ssl_support_method       = "sni-only"
   }
+
+  logging_config {
+    bucket = aws_s3_bucket.logs.bucket_regional_domain_name
+    prefix = "cloudfront/"
+  }
 }
 
 resource "aws_route53_record" "files" {

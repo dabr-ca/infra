@@ -95,11 +95,11 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_domain"></a> [domain](#input\_domain) | Domain of the Pleroma instance. This domain points to ELB. The domain must already exist in Route 53. | `string` | n/a | yes |
 | <a name="input_ec2_instance_type"></a> [ec2\_instance\_type](#input\_ec2\_instance\_type) | n/a | `string` | `"t3.micro"` | no |
-| <a name="input_ec2_key_name"></a> [ec2\_key\_name](#input\_ec2\_key\_name) | Name of key pair to log into the EC2 instance. The key pair must already exist. | `any` | n/a | yes |
+| <a name="input_ec2_key_name"></a> [ec2\_key\_name](#input\_ec2\_key\_name) | Name of key pair to log into the EC2 instance. The key pair must already exist. | `string` | n/a | yes |
 | <a name="input_files_domain"></a> [files\_domain](#input\_files\_domain) | Domain for serving user-uploaded files. This domain points to CloudFront, whose origin is an S3 bucket. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Name of the service. It will be used to name EC2, ELB, and RDS instances. | `string` | `"pleroma"` | no |
 | <a name="input_private_subnet_ids"></a> [private\_subnet\_ids](#input\_private\_subnet\_ids) | List of IDs of subnets to create private resources (e.g. databases) in. | `list(string)` | n/a | yes |
-| <a name="input_public_subnet_ids"></a> [public\_subnet\_ids](#input\_public\_subnet\_ids) | List of Ids of subnets to create public resources (e.g. load balancers) in. | `list(string)` | n/a | yes |
+| <a name="input_public_subnet_ids"></a> [public\_subnet\_ids](#input\_public\_subnet\_ids) | List of IDs of subnets to create public resources (e.g. load balancers) in. | `list(string)` | n/a | yes |
 | <a name="input_rds_instance_class"></a> [rds\_instance\_class](#input\_rds\_instance\_class) | n/a | `string` | `"db.t4g.micro"` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the VPC where the resources are created. | `string` | n/a | yes |
 

@@ -28,7 +28,7 @@ variable "private_subnet_ids" {
 }
 
 variable "public_subnet_ids" {
-  description = "List of Ids of subnets to create public resources (e.g. load balancers) in."
+  description = "List of IDs of subnets to create public resources (e.g. load balancers) in."
   type        = list(string)
   validation {
     condition     = length(var.public_subnet_ids) >= 3
@@ -42,6 +42,7 @@ variable "ec2_instance_type" {
 
 variable "ec2_key_name" {
   description = "Name of key pair to log into the EC2 instance. The key pair must already exist."
+  type        = string
 }
 
 variable "rds_instance_class" {

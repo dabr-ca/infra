@@ -1,6 +1,6 @@
 # Terraform code for dabr.ca
 
-This repository contains Terraform code for [dabr.ca](https://dabr.ca/)], a microblogging site powered by [Pleroma](https://pleroma.social/).
+This repository contains Terraform code for [dabr.ca](https://dabr.ca/), a microblogging site powered by [Pleroma](https://pleroma.social/).
 
 ## Setup
 

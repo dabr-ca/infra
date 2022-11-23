@@ -20,3 +20,7 @@ In the event that the administrator of dabr.ca is unable to fulfil their respons
 * Security groups, IAM roles, ACM certificates, Route 53 records, etc
 
 Check [module README](./modules/pleroma/README.md) for details.
+
+## Cost
+
+Most of the AWS resources are eligible for 12-month Free Tier, [after which cost is approximately 40 USD/mo](https://calculator.aws/#/estimate?id=45a11934bdf6900573ad46263707edfc2ad4d44c).

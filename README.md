@@ -2,6 +2,8 @@
 
 This repository contains Terraform code for [dabr.ca](https://dabr.ca/), a microblogging site powered by [Pleroma](https://pleroma.social/).
 
+In the event that the administrator of dabr.ca is unable to fulfil their responsibilities, anyone interested can use this repo to set up as a successor. If you want to run your own instance, you may need to do a find-and-replace for hard-coded values such as domain names.
+
 ## Setup
 
 1. Have an AWS account ready.

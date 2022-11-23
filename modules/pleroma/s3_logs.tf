@@ -12,6 +12,21 @@ resource "aws_s3_bucket_public_access_block" "logs" {
   restrict_public_buckets = true
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "logs" {
+  bucket = aws_s3_bucket.logs.id
+
+  rule {
+    id     = "ExpireOldLogs"
+    status = "Enabled"
+
+    filter {}
+
+    expiration {
+      days = 365
+    }
+  }
+}
+
 # Allow CloudFront to deliver logs to the bucket
 # https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html#AccessLogsBucketAndFileOwnership
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_log_delivery_canonical_user_id
@@ -21,7 +36,7 @@ data "aws_cloudfront_log_delivery_canonical_user_id" "cloudfront" {}
 data "aws_canonical_user_id" "current" {}
 
 resource "aws_s3_bucket_acl" "logs_cloudfront" {
-  bucket = aws_s3_bucket.logs.bucket
+  bucket = aws_s3_bucket.logs.id
 
   access_control_policy {
     grant {
@@ -42,7 +57,7 @@ resource "aws_s3_bucket_acl" "logs_cloudfront" {
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/elb_service_account
 
 resource "aws_s3_bucket_policy" "logs_elb" {
-  bucket = aws_s3_bucket.logs.bucket
+  bucket = aws_s3_bucket.logs.id
   policy = data.aws_iam_policy_document.logs_bucket_policy.json
 }
 

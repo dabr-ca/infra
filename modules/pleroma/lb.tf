@@ -2,6 +2,12 @@ resource "aws_lb" "main" {
   name            = local.name
   subnets         = var.public_subnet_ids
   security_groups = [aws_security_group.lb.id]
+
+  access_logs {
+    enabled = true
+    bucket  = aws_s3_bucket.logs.bucket
+    prefix  = "elb"
+  }
 }
 
 resource "aws_lb_listener" "main_http" {
@@ -24,6 +30,7 @@ resource "aws_lb_listener" "main_https" {
   port              = 443
   protocol          = "HTTPS"
   certificate_arn   = aws_acm_certificate_validation.main.certificate_arn
+  ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
 
   default_action {
     type             = "forward"

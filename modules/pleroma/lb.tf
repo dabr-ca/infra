@@ -5,7 +5,7 @@ resource "aws_lb" "main" {
 
   access_logs {
     enabled = true
-    bucket  = aws_s3_bucket.logs.bucket
+    bucket  = aws_s3_bucket.logs.id
     prefix  = "elb"
   }
 }

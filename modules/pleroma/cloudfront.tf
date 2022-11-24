@@ -27,7 +27,7 @@ resource "aws_cloudfront_distribution" "main" {
     allowed_methods          = ["GET", "HEAD"]
     cached_methods           = ["GET", "HEAD"]
     cache_policy_id          = data.aws_cloudfront_cache_policy.managed["CachingOptimized"].id
-    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.managed["CORS-S3Origin"].id
+    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.managed["CORS-CustomOrigin"].id
   }
 
   origin {

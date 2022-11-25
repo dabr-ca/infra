@@ -46,3 +46,10 @@ resource "aws_ssm_parameter" "s3_bucket" {
   type  = "String"
   value = aws_s3_bucket.main.bucket
 }
+
+resource "aws_s3_object" "healthcheck" {
+  bucket       = aws_s3_bucket.main.id
+  key          = "healthcheck"
+  content      = "OK"
+  content_type = "text/plain"
+}

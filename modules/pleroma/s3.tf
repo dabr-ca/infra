@@ -11,7 +11,7 @@ resource "aws_s3_bucket_public_access_block" "main" {
 
   # https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html
   block_public_acls       = false # needed by Pleroma S3 uploader
-  ignore_public_acls      = false
+  ignore_public_acls      = true  # ignore public ACL set by the Pleroma so that direct access is blocked
   block_public_policy     = true
   restrict_public_buckets = true
 }
@@ -21,22 +21,25 @@ resource "aws_s3_bucket_policy" "main" {
   policy = data.aws_iam_policy_document.bucket_policy.json
 }
 
-resource "aws_cloudfront_origin_access_identity" "main" {}
-
 data "aws_iam_policy_document" "bucket_policy" {
   # Allow CloudFront to read from the bucket
   statement {
+    principals {
+      type = "Service"
+      identifiers = [
+        "cloudfront.amazonaws.com"
+      ]
+    }
     actions = [
       "s3:GetObject"
     ]
     resources = [
       "${aws_s3_bucket.main.arn}/*",
     ]
-    principals {
-      type = "AWS"
-      identifiers = [
-        aws_cloudfront_origin_access_identity.main.iam_arn
-      ]
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.main.arn]
     }
   }
 }

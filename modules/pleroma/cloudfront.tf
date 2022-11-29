@@ -31,12 +31,9 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   origin {
-    origin_id   = aws_s3_bucket.main.bucket_regional_domain_name
-    domain_name = aws_s3_bucket.main.bucket_regional_domain_name
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.main.cloudfront_access_identity_path
-    }
+    origin_id                = aws_s3_bucket.main.bucket_regional_domain_name
+    domain_name              = aws_s3_bucket.main.bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.main.id
   }
 
   origin {
@@ -67,6 +64,14 @@ resource "aws_cloudfront_distribution" "main" {
     bucket = aws_s3_bucket.logs.bucket_regional_domain_name
     prefix = "cloudfront/"
   }
+}
+
+resource "aws_cloudfront_origin_access_control" "main" {
+  name                              = var.files_domain
+  description                       = var.files_domain
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
 
 resource "aws_route53_record" "files" {

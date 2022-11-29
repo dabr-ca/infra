@@ -21,22 +21,25 @@ resource "aws_s3_bucket_policy" "main" {
   policy = data.aws_iam_policy_document.bucket_policy.json
 }
 
-resource "aws_cloudfront_origin_access_identity" "main" {}
-
 data "aws_iam_policy_document" "bucket_policy" {
   # Allow CloudFront to read from the bucket
   statement {
+    principals {
+      type = "Service"
+      identifiers = [
+        "cloudfront.amazonaws.com"
+      ]
+    }
     actions = [
       "s3:GetObject"
     ]
     resources = [
       "${aws_s3_bucket.main.arn}/*",
     ]
-    principals {
-      type = "AWS"
-      identifiers = [
-        aws_cloudfront_origin_access_identity.main.iam_arn
-      ]
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = aws_cloudfront_distribution.main.arn
     }
   }
 }

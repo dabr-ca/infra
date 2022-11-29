@@ -11,7 +11,7 @@ resource "aws_s3_bucket_public_access_block" "main" {
 
   # https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html
   block_public_acls       = false # needed by Pleroma S3 uploader
-  ignore_public_acls      = false
+  ignore_public_acls      = true  # ignore public ACL set by the Pleroma so that direct access is blocked
   block_public_policy     = true
   restrict_public_buckets = true
 }

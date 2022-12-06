@@ -47,7 +47,7 @@ resource "aws_iam_user_policy" "logstash" {
   policy = data.aws_iam_policy_document.logstash.json
 }
 
-resource "aws_iam_access_key" "main" {
+resource "aws_iam_access_key" "logstash" {
   user = aws_iam_user.logstash.name
 }
 

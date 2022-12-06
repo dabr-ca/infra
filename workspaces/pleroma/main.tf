@@ -36,3 +36,28 @@ resource "aws_route53_record" "google_domains_mx" {
     "40 alt4.gmr-smtp-in.l.google.com.",
   ]
 }
+
+# Set up a static IAM user so that Logstash can read logs from a non-AWS environment
+resource "aws_iam_user" "logstash" {
+  name = "logstash"
+}
+
+resource "aws_iam_user_policy" "logstash" {
+  user   = aws_iam_user.logstash.name
+  policy = data.aws_iam_policy_document.logstash.json
+}
+
+resource "aws_iam_access_key" "main" {
+  user = aws_iam_user.logstash.name
+}
+
+data "aws_iam_policy_document" "logstash" {
+  statement {
+    actions   = ["s3:ListBucket"]
+    resources = [module.pleroma.bucket_logs.arn]
+  }
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${module.pleroma.bucket_logs.arn}/*"]
+  }
+}

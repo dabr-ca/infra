@@ -61,3 +61,13 @@ data "aws_iam_policy_document" "logstash" {
     resources = ["${module.pleroma.bucket_logs.arn}/*"]
   }
 }
+
+output "logstash" {
+  description = "Information for setting up Logstash."
+  value = {
+    bucket            = module.pleroma.bucket_logs.id
+    access_key_id     = aws_iam_access_key.logstash.id
+    secret_access_key = aws_iam_access_key.logstash.secret
+  }
+  sensitive = true
+}

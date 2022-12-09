@@ -4,19 +4,20 @@ locals {
 
 # Place EC2 in the same AZ as the RDS to avoid cross-AZ data charge
 data "aws_subnet" "ec2" {
-  for_each = toset(var.public_subnet_ids)
-
-  id = each.key
   filter {
     name   = "availability-zone"
     values = [aws_db_instance.main.availability_zone]
+  }
+  filter {
+    name   = "subnet-id"
+    values = var.public_subnet_ids
   }
 }
 
 resource "aws_instance" "main" {
   ami                  = data.aws_ami.ubuntu.id
   instance_type        = var.ec2_instance_type
-  subnet_id            = one(data.aws_subnet.ec2[*].id)
+  subnet_id            = data.aws_subnet.ec2.id
   key_name             = data.aws_key_pair.main.key_name
   iam_instance_profile = aws_iam_instance_profile.main.name
 

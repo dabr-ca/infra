@@ -39,13 +39,10 @@ data "aws_iam_policy_document" "main" {
   # https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-access.html
   statement {
     actions = [
-      "ssm:PutParameter",
-      "ssm:DeleteParameter",
+      "ssm:GetParameter",
+      "ssm:GetParameters",
       "ssm:GetParameterHistory",
       "ssm:GetParametersByPath",
-      "ssm:GetParameters",
-      "ssm:GetParameter",
-      "ssm:DeleteParameters"
     ]
     resources = [
       "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.id}:parameter/${local.name}/*"

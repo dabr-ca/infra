@@ -11,7 +11,7 @@ resource "aws_db_instance" "main" {
   identifier             = local.name
   db_name                = local.postgres_name
   instance_class         = var.rds_instance_class
-  storage_type           = "gp2" # https://github.com/hashicorp/terraform-provider-aws/issues/27702
+  storage_type           = "gp3"
   allocated_storage      = 20
   multi_az               = false
   db_subnet_group_name   = aws_db_subnet_group.main.name

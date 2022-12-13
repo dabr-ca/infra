@@ -35,7 +35,7 @@ resource "aws_instance" "main" {
   }
 
   lifecycle {
-    ignore_changes = [ami]
+    ignore_changes = [ami, subnet_id]
   }
 }
 

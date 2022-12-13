@@ -23,6 +23,12 @@ resource "aws_db_instance" "main" {
   password = random_password.postgres.result
 }
 
+locals {
+  # Indirectly referencing via a local variable avoids force reading of data
+  # source.
+  db_az = aws_db_instance.main.availability_zone
+}
+
 resource "aws_db_subnet_group" "main" {
   name       = local.name
   subnet_ids = var.private_subnet_ids

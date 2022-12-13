@@ -6,7 +6,7 @@ locals {
 data "aws_subnet" "ec2" {
   filter {
     name   = "availability-zone"
-    values = [aws_db_instance.main.availability_zone]
+    values = [local.db_az]
   }
   filter {
     name   = "subnet-id"
@@ -35,7 +35,7 @@ resource "aws_instance" "main" {
   }
 
   lifecycle {
-    ignore_changes = [ami, subnet_id]
+    ignore_changes = [ami]
   }
 }
 

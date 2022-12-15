@@ -69,6 +69,8 @@ data "aws_iam_policy_document" "main" {
     actions = [
       "ses:SendRawEmail"
     ]
-    resources = ["*"]
+    resources = [
+      aws_ses_domain_identity.main.arn
+    ]
   }
 }

@@ -94,14 +94,16 @@ resource "aws_db_parameter_group" "main" {
   # Sets the maximum number of concurrent connections.
   # Default: LEAST({DBInstanceClassMemory/9531392},5000) = 112
   parameter {
-    name  = "max_connections"
-    value = 20
+    name         = "max_connections"
+    value        = 20
+    apply_method = "pending-reboot"
   }
   # (8kB) Sets the number of shared memory buffers used by the server.
   # Default: {DBInstanceClassMemory/32768} = 32768
   parameter {
-    name  = "shared_buffers"
-    value = 32768
+    name         = "shared_buffers"
+    value        = 32768
+    apply_method = "pending-reboot"
   }
   # (8kB) Sets the planners assumption about the size of the disk cache.
   # Default: {DBInstanceClassMemory/16384} = 65536
@@ -124,8 +126,9 @@ resource "aws_db_parameter_group" "main" {
   # (8kB) Sets the number of disk-page buffers in shared memory for WAL.
   # Default: (empty)
   parameter {
-    name  = "wal_buffers"
-    value = 983
+    name         = "wal_buffers"
+    value        = 983
+    apply_method = "pending-reboot"
   }
   # Sets the default statistics target.
   # Default: (empty)

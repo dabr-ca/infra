@@ -120,8 +120,9 @@ resource "aws_db_parameter_group" "main" {
   # Time spent flushing dirty buffers during checkpoint, as fraction of checkpoint interval.
   # Default: 0.9
   parameter {
-    name  = "checkpoint_completion_target"
-    value = 0.9
+    name         = "checkpoint_completion_target"
+    value        = 0.9
+    apply_method = "pending-reboot"
   }
   # (8kB) Sets the number of disk-page buffers in shared memory for WAL.
   # Default: (empty)

@@ -1,5 +1,5 @@
 locals {
-  pg_dump_prefix = "pgdump/"
+  pg_dump_prefix = "pg_dump/"
 }
 
 resource "aws_s3_bucket" "backup" {

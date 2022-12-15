@@ -25,14 +25,16 @@ resource "aws_iam_role_policy" "main" {
 }
 
 data "aws_iam_policy_document" "main" {
-  # Allow accessing S3 bucket
+  # Allow accessing S3 buckets
   statement {
     actions = [
       "s3:*",
     ]
     resources = [
       aws_s3_bucket.main.arn,
+      aws_s3_bucket.backup.arn,
       "${aws_s3_bucket.main.arn}/*",
+      "${aws_s3_bucket.backup.arn}/*",
     ]
   }
   # Allow reading from parameter store

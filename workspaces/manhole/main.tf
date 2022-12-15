@@ -29,3 +29,7 @@ resource "aws_instance" "manhole" {
 resource "aws_eip" "manhole" {
   instance = aws_instance.manhole.id
 }
+
+output "manhole_address" {
+  value = aws_eip.manhole.address
+}

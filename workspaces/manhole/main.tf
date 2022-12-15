@@ -31,5 +31,5 @@ resource "aws_eip" "manhole" {
 }
 
 output "manhole_address" {
-  value = aws_eip.manhole.address
+  value = aws_eip.manhole.public_ip
 }

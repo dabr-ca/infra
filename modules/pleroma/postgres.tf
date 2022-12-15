@@ -94,61 +94,73 @@ resource "aws_db_parameter_group" "main" {
   # Sets the maximum number of concurrent connections.
   # Default: LEAST({DBInstanceClassMemory/9531392},5000) = 112
   parameter {
-    max_connections = 20
+    name  = "max_connections"
+    value = 20
   }
   # (8kB) Sets the number of shared memory buffers used by the server.
   # Default: {DBInstanceClassMemory/32768} = 32768
   parameter {
-    shared_buffers = 32768
+    name  = "shared_buffers"
+    value = 32768
   }
   # (8kB) Sets the planners assumption about the size of the disk cache.
   # Default: {DBInstanceClassMemory/16384} = 65536
   parameter {
-    effective_cache_size = 98304
+    name  = "effective_cache_size"
+    value = 98304
   }
   # (kB) Sets the maximum memory to be used for maintenance operations.
   # Default: GREATEST({DBInstanceClassMemory*1024/63963136},65536) = 65536
   parameter {
-    maintenance_work_mem = 65536
+    name  = "maintenance_work_mem"
+    value = 65536
   }
   # Time spent flushing dirty buffers during checkpoint, as fraction of checkpoint interval.
   # Default: 0.9
   parameter {
-    checkpoint_completion_target = 0.9
+    name  = "checkpoint_completion_target"
+    value = 0.9
   }
   # (8kB) Sets the number of disk-page buffers in shared memory for WAL.
   # Default: (empty)
   parameter {
-    wal_buffers = 983
+    name  = "wal_buffers"
+    value = 983
   }
   # Sets the default statistics target.
   # Default: (empty)
   parameter {
-    default_statistics_target = 100
+    name  = "default_statistics_target"
+    value = 100
   }
   # Sets the planners estimate of the cost of a nonsequentially fetched disk page.
   # Default: (empty)
   parameter {
-    random_page_cost = 1.1
+    name  = "random_page_cost"
+    value = 1.1
   }
   # Number of simultaneous requests that can be handled efficiently by the disk subsystem.
   # Default: (empty)
   parameter {
-    effective_io_concurrency = 200
+    name  = "effective_io_concurrency"
+    value = 200
   }
   # (kB) Sets the maximum memory to be used for query workspaces.
   # Default: (empty)
   parameter {
-    work_mem = 6553
+    name  = "work_mem"
+    value = 6553
   }
   # (MB) Sets the minimum size to shrink the WAL to.
   # Default: 192
   parameter {
-    min_wal_size = 1024
+    name  = "min_wal_size"
+    value = 1024
   }
   # (MB) Sets the WAL size that triggers a checkpoint.
   # Default: 2048
   parameter {
-    max_wal_size = 4096
+    name  = "max_wal_size"
+    value = 4096
   }
 }

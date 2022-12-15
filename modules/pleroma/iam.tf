@@ -28,7 +28,13 @@ data "aws_iam_policy_document" "main" {
   # Allow accessing S3 buckets
   statement {
     actions = [
-      "s3:*",
+      "s3:ListAllMyBuckets"
+    ]
+    resources = ["*"]
+  }
+  statement {
+    actions = [
+      "s3:*"
     ]
     resources = [
       aws_s3_bucket.main.arn,
@@ -54,9 +60,7 @@ data "aws_iam_policy_document" "main" {
     actions = [
       "ssm:DescribeParameters",
     ]
-    resources = [
-      "*"
-    ]
+    resources = ["*"]
   }
   # Allow sending emails
   # SednRawEmail is required by Swoosh

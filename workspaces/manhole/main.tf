@@ -7,10 +7,6 @@ data "aws_instance" "main" {
     name   = "tag:Name"
     values = [local.name]
   }
-  filter {
-    name   = "instance-state-name"
-    values = ["running"]
-  }
 }
 
 resource "aws_instance" "manhole" {
@@ -23,6 +19,10 @@ resource "aws_instance" "manhole" {
 
   root_block_device {
     volume_type = "gp3"
+  }
+
+  tags = {
+    Name = "manhole"
   }
 }
 

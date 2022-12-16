@@ -91,13 +91,6 @@ resource "aws_db_parameter_group" "main" {
   name   = local.name
   family = "postgres13"
 
-  # Sets the maximum number of concurrent connections.
-  # Default: LEAST({DBInstanceClassMemory/9531392},5000) = 112
-  parameter {
-    name         = "max_connections"
-    value        = 20
-    apply_method = "pending-reboot"
-  }
   # (8kB) Sets the number of shared memory buffers used by the server.
   # Default: {DBInstanceClassMemory/32768} = 32768
   parameter {

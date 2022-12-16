@@ -20,6 +20,9 @@ resource "aws_db_instance" "main" {
   backup_retention_period      = 7
   performance_insights_enabled = true
 
+  apply_immediately   = true
+  deletion_protection = true
+
   username = local.postgres_username
   password = random_password.postgres.result
 }

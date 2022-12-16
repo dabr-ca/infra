@@ -11,7 +11,7 @@ resource "aws_db_instance" "main" {
   identifier             = local.name
   db_name                = local.postgres_name
   instance_class         = var.rds_instance_class
-  storage_type           = "gp3"
+  storage_type           = var.rds_storage_type
   allocated_storage      = 20
   multi_az               = false
   db_subnet_group_name   = aws_db_subnet_group.main.name

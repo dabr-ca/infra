@@ -1,5 +1,6 @@
 variable "name" {
   description = "Name of the service. It will be used to name EC2, ELB, and RDS instances."
+  type        = string
   default     = "pleroma"
 }
 
@@ -37,6 +38,7 @@ variable "public_subnet_ids" {
 }
 
 variable "ec2_instance_type" {
+  type    = string
   default = "t3.micro"
 }
 
@@ -46,5 +48,11 @@ variable "ec2_key_name" {
 }
 
 variable "rds_instance_class" {
+  type    = string
   default = "db.t4g.micro"
+}
+
+variable "rds_storage_type" {
+  type    = string
+  default = "gp2" # gp3 is no eligible for free tier
 }

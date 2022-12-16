@@ -118,32 +118,32 @@ resource "aws_db_parameter_group" "main" {
     apply_method = "pending-reboot"
   }
   # (8kB) Sets the number of disk-page buffers in shared memory for WAL.
-  # Default: (empty)
+  # Default: <engine-default> = -1 = 1/32 * shared_buffers = 1024
   parameter {
     name         = "wal_buffers"
     value        = 983
     apply_method = "pending-reboot"
   }
   # Sets the default statistics target.
-  # Default: (empty)
+  # Default: <engine-default> = 100
   parameter {
     name  = "default_statistics_target"
     value = 100
   }
   # Sets the planners estimate of the cost of a nonsequentially fetched disk page.
-  # Default: (empty)
+  # Default: <engine-default> = 4
   parameter {
     name  = "random_page_cost"
     value = 1.1
   }
   # Number of simultaneous requests that can be handled efficiently by the disk subsystem.
-  # Default: (empty)
+  # Default: <engine-default> = 1
   parameter {
     name  = "effective_io_concurrency"
     value = 200
   }
   # (kB) Sets the maximum memory to be used for query workspaces.
-  # Default: (empty)
+  # Default: <engine-default> = 4096
   parameter {
     name  = "work_mem"
     value = 6553

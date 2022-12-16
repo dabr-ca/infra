@@ -15,6 +15,8 @@ module "pleroma" {
   private_subnet_ids = data.terraform_remote_state.vpc.outputs.subnet_ids.private[*]
   public_subnet_ids  = data.terraform_remote_state.vpc.outputs.subnet_ids.public[*]
   ec2_key_name       = "wzyboy@tarball"
+
+  rds_storage_type = "gp3"
 }
 
 # Use Google Domain's MX

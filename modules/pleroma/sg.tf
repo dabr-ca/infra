@@ -46,6 +46,15 @@ resource "aws_security_group" "lb" {
   vpc_id = var.vpc_id
 }
 
+resource "aws_security_group_rule" "lb_ingress_icmp" {
+  security_group_id = aws_security_group.lb.id
+  type              = "ingress"
+  protocol          = "icmp"
+  from_port         = -1
+  to_port           = -1
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+
 resource "aws_security_group_rule" "lb_ingress_http" {
   security_group_id = aws_security_group.lb.id
   type              = "ingress"

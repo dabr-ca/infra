@@ -1,4 +1,5 @@
 locals {
+  name   = "dabr-ca"
   domain = "dabr.ca"
 }
 
@@ -8,7 +9,7 @@ module "pleroma" {
     aws.us-east-1 = aws.us-east-1
   }
 
-  name               = "dabr-ca"
+  name               = local.name
   domain             = local.domain
   files_domain       = "files.${local.domain}"
   vpc_id             = data.terraform_remote_state.vpc.outputs.vpc_id

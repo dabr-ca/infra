@@ -7,6 +7,11 @@ output "instance" {
   }
 }
 
+output "lb" {
+  description = "The Application Load Balancer."
+  value       = aws_lb.main
+}
+
 output "bucket_main" {
   description = "S3 bucket for storing user-uploaded files."
   value       = aws_s3_bucket.main

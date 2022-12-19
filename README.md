@@ -23,4 +23,4 @@ Check [module README](./modules/pleroma/README.md) for details.
 
 ## Cost
 
-Most of the AWS resources are eligible for 12-month Free Tier, [after which cost is approximately 500 USD/y](https://calculator.aws/#/estimate?id=45a11934bdf6900573ad46263707edfc2ad4d44c).
+Most of the AWS resources are eligible for 12-month Free Tier, [after which cost is approximately 500 USD/y](https://calculator.aws/#/estimate?id=45a11934bdf6900573ad46263707edfc2ad4d44c). You can utilize [EC2 Instance Savings Plan](https://aws.amazon.com/savingsplans/compute-pricing/) and [RDS Reserved Instances](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html) to **cut the price down by more than half** if you are committed to run your site on AWS for more than 1 year.

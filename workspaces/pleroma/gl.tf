@@ -7,6 +7,7 @@ locals {
 
 data "aws_lb_listener" "main_https" {
   load_balancer_arn = module.pleroma.lb.arn
+  port              = 443
 }
 
 data "aws_lb_target_group" "main" {

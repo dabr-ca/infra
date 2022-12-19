@@ -27,7 +27,7 @@ resource "aws_lb_listener_rule" "gl" {
 
 resource "aws_lb_target_group" "gl" {
   name     = "${local.name}-gl"
-  port     = 80
+  port     = 4080
   protocol = "HTTP"
   vpc_id   = data.terraform_remote_state.vpc.outputs.vpc_id
 }

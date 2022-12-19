@@ -1,6 +1,7 @@
 output "instance" {
   description = "The main EC2 instance."
   value = {
+    id         = aws_instance.main.id
     arn        = aws_instance.main.arn
     public_ip  = aws_eip.main.public_ip
     private_ip = aws_instance.main.private_ip

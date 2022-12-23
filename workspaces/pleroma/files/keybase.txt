@@ -1,0 +1,72 @@
+==================================================================
+https://keybase.io/wzyboy
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://dabr.ca
+  * I am wzyboy (https://keybase.io/wzyboy) on keybase.
+  * I have a public key with fingerprint CDEF 6ED1 A4C7 ADE1 D6AB  C4DB AE9C 2216 8EBA 0BDB
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101d8255c38b754f928ecb171d81a32fd30ef33c01fb0ef40df702189cadc88c23c0a",
+      "fingerprint": "cdef6ed1a4c7ade1d6abc4dbae9c22168eba0bdb",
+      "host": "keybase.io",
+      "key_id": "ae9c22168eba0bdb",
+      "kid": "0101d8255c38b754f928ecb171d81a32fd30ef33c01fb0ef40df702189cadc88c23c0a",
+      "uid": "9977be95ac45cc41069f690be38b6600",
+      "username": "wzyboy"
+    },
+    "service": {
+      "hostname": "dabr.ca",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1671753572,
+  "expire_in": 157680000,
+  "prev": "073de9d05f74d170f894c844412f9aac765d99d88eb5ae0cd9046bebb1b52dec",
+  "seqno": 24,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUmtMFFcY3QU2XeSlphKlUmEQJAo6MzvPLVKrojSIBGg1hQLOnXtnGWF3cXdF
+Hl1RK4IkAgI/WpCCldoAPni2BbGptQrWIiFQWqVqbUBLMEFICoXYxwzRf/3Z++fe
+e75zzv3uyVfu5arRay+dwXxLuz1GtbcngEZsmDLlY8AKczFjPpaBFjeUCZHdkZYh
+Q8yI4QROQI6kadHAAZamJJ7kkAgIVkEJwUBK0IAjyWAQcUICyonCocTiJMHxogBF
+jhNJpSRgYZgkW0zIlmWTLQ7FVoRIYhAkBEpkBYgIyAhApCAQEC+SJMFwCAg4gEAR
+plvtqkJpDgh2tFG2KphySVts7z/4/3PfBxfteJ5lAeJpQaRoUaQInOElhscBUtwZ
+BsdVoh3ZLIIZKexDebnAmos5wzAFy5ZFpMaq/uNFHQrAtlFU3bNsVodVtGYqYLrD
+kWU3qiJHbtaiCwJpL/RpQLZAJUBFkY1sdtlqwYyEwhQdsmpIMCzB0gaaJcMwlJMl
+21CarDJoluFwZanvoGw1FdYAEQ9xWmIpSCSwuMTxlMhRFEWQEi8IIsvQkOchp+RJ
+CwgXIY9TDEAAEIAmIRIx9UsHLFbMSFJKo4JJMbXLJovgOGhDmHPJSReDm0ar1/j7
+Brr1T1kGG3ovPhpp/m705dTpXNSR0yxxX/oS2T2yVFN2uOvKpX3LFib02n+Czrcd
+KTi9YCYKOjcjkMAUn5zON5/X/+KvP7DcxUu7IufpruP2sg9rbrZ81Pf+ztdKhauD
+PXDg18f6wR+jN9XOz8jg4ZPOy8fueleWh37sHIv6jKwIfHYvcd3zq6kxhtpt7Xvc
+VlM/3No+EdxxtlDr4pwZYUff9fBMtufsi6gedsTtTNB61KS7PrBgk0ENicNkfMfx
+G3VjbXHr7ww21c+7tizMiYXbn9QHPF9WUhSKbdlh9zyRTAy3aqtD7nf13fbdkdHt
+U3h4M722q/DrkKQx+/pzeMnAdIdvWPnvfl9ePGX+OZ9vD4ifGy6K3XMn0mP2+6GI
+o/HVPUkTATHRpcEVmTrdgF+QVLy3PDtrhbcuvrBxw43xvmMjjYmnU9zX/PGT19xM
+c9WFR2vO5s1Wen1zrz5vfFVKoPnTrTGReUVP+3trP/gtInzoftP1c1WNumBP3e7V
+7V9EG7Qkt+umf0J47KqhQw91j1sfbHH/iql6O/b1KZP+grfNNyY0+VqSa42u4L3P
+24YuR9Q56ZlO52zCKy1xlmbjurUBbm9MRsGjGbd6zQOQtWzqG02Sl/+5YeW8Dk99
+1mq70lhh1r/qVny3xCcDjYd3R/mgv8dStgVXvhMWsxfNTeh79uvKvr2W79epd6au
+dG6NPDXpcn3a9NeRiDf3N4W8Zew/E1/3yb8=
+=xt0T
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/wzyboy
+
+==================================================================

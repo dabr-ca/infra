@@ -5,11 +5,6 @@ locals {
   gl_domain = "gl.${local.domain}"
 }
 
-data "aws_lb_listener" "main_https" {
-  load_balancer_arn = module.pleroma.lb.arn
-  port              = 443
-}
-
 resource "aws_lb_listener_rule" "gl" {
   listener_arn = data.aws_lb_listener.main_https.arn
 

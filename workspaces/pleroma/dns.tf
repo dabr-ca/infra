@@ -1,5 +1,4 @@
 # Set up MX to receive emails
-
 resource "aws_route53_record" "google_domains_mx" {
   zone_id = data.aws_route53_zone.main.id
 
@@ -13,4 +12,14 @@ resource "aws_route53_record" "google_domains_mx" {
     "30 alt3.gmr-smtp-in.l.google.com.",
     "40 alt4.gmr-smtp-in.l.google.com.",
   ]
+}
+
+# Status page
+resource "aws_route53_record" "status" {
+  zone_id = data.aws_route53_zone.main.id
+
+  name    = "status.${local.domain}"
+  type    = "CNAME"
+  ttl     = 300
+  records = ["statuspage.betteruptime.com"]
 }

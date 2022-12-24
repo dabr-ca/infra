@@ -66,3 +66,13 @@ resource "aws_ssm_parameter" "postgres_password" {
   type  = "SecureString"
   value = random_password.postgres.result
 }
+
+resource "aws_ssm_parameter" "postgres_heartbeat_url" {
+  name  = "/${local.name}/postgres/heartbeat_url"
+  type  = "String"
+  value = "." # populate this value manually
+
+  lifecycle {
+    ignore_changes = [value]
+  }
+}

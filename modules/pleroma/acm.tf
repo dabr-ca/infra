@@ -23,7 +23,8 @@ resource "aws_acm_certificate" "us-east-1" {
 
   domain_name       = data.aws_route53_zone.main.name
   validation_method = "DNS"
-  key_algorithm     = "EC_secp384r1"
+  # CloudFront only supports P-256
+  key_algorithm = "EC_prime256v1"
 
   subject_alternative_names = [
     "*.${data.aws_route53_zone.main.name}",

@@ -13,8 +13,3 @@ output "subnet_ids" {
     public  = module.vpc.public_subnets
   }
 }
-
-output "sg_ids" {
-  description = "Map of common security group name => id"
-  value       = module.vpc.sg_ids
-}

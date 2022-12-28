@@ -1,10 +1,15 @@
 resource "aws_acm_certificate" "main" {
   domain_name       = data.aws_route53_zone.main.name
   validation_method = "DNS"
+  key_algorithm     = "EC_secp384r1"
 
   subject_alternative_names = [
     "*.${data.aws_route53_zone.main.name}",
   ]
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_acm_certificate_validation" "main" {
@@ -18,10 +23,15 @@ resource "aws_acm_certificate" "us-east-1" {
 
   domain_name       = data.aws_route53_zone.main.name
   validation_method = "DNS"
+  key_algorithm     = "EC_secp384r1"
 
   subject_alternative_names = [
     "*.${data.aws_route53_zone.main.name}",
   ]
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_acm_certificate_validation" "us-east-1" {

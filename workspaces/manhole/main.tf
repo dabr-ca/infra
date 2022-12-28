@@ -1,5 +1,6 @@
 locals {
-  name = "dabr-ca"
+  name   = "dabr-ca"
+  domain = "dabr.ca"
 }
 
 data "aws_instance" "main" {

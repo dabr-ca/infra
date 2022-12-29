@@ -22,6 +22,10 @@ resource "aws_lb_target_group" "relay" {
   port     = 8080
   protocol = "HTTP"
   vpc_id   = data.terraform_remote_state.vpc.outputs.vpc_id
+
+  health_check {
+    interval = 300
+  }
 }
 
 resource "aws_lb_target_group_attachment" "relay" {

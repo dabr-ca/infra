@@ -25,6 +25,10 @@ resource "aws_instance" "manhole" {
   tags = {
     Name = "manhole"
   }
+
+  lifecycle {
+    ignore_changes = [ami]
+  }
 }
 
 resource "aws_eip" "manhole" {

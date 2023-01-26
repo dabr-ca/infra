@@ -1,5 +1,6 @@
 locals {
-  name = "dabr-ca"
+  name   = "dabr-ca"
+  domain = "dabr.ca"
 }
 
 data "aws_instance" "main" {
@@ -10,7 +11,7 @@ data "aws_instance" "main" {
 }
 
 resource "aws_instance" "manhole" {
-  ami                    = data.aws_instance.main.ami
+  ami                    = data.aws_ami.ubuntu22.id
   instance_type          = data.aws_instance.main.instance_type
   subnet_id              = data.aws_instance.main.subnet_id
   key_name               = data.aws_instance.main.key_name
@@ -23,6 +24,10 @@ resource "aws_instance" "manhole" {
 
   tags = {
     Name = "manhole"
+  }
+
+  lifecycle {
+    ignore_changes = [ami]
   }
 }
 

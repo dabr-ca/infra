@@ -16,7 +16,7 @@ resource "aws_s3_bucket_public_access_block" "backup" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_ownership_controls" "main" {
+resource "aws_s3_bucket_ownership_controls" "backup" {
   bucket = aws_s3_bucket.main.id
 
   # Disable ACL

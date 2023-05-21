@@ -56,3 +56,8 @@ variable "rds_storage_type" {
   type    = string
   default = "gp2" # gp3 is no eligible for free tier
 }
+
+variable "rds_allocated_storage" {
+  type    = number
+  default = 20
+}

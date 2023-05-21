@@ -12,7 +12,7 @@ resource "aws_db_instance" "main" {
   db_name                = local.postgres_name
   instance_class         = var.rds_instance_class
   storage_type           = var.rds_storage_type
-  allocated_storage      = 20
+  allocated_storage      = var.rds_allocated_storage
   multi_az               = false
   db_subnet_group_name   = aws_db_subnet_group.main.name
   vpc_security_group_ids = [aws_security_group.db.id]

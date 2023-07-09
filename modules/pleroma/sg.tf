@@ -10,6 +10,7 @@ resource "aws_vpc_security_group_ingress_rule" "backend_ssh" {
   from_port         = 22
   to_port           = 22
   cidr_ipv4         = "0.0.0.0/0"
+  description       = "SSH"
 }
 
 resource "aws_vpc_security_group_ingress_rule" "backend_mosh" {
@@ -18,6 +19,7 @@ resource "aws_vpc_security_group_ingress_rule" "backend_mosh" {
   from_port         = 60000
   to_port           = 61000
   cidr_ipv4         = "0.0.0.0/0"
+  description       = "Mosh"
 }
 
 resource "aws_vpc_security_group_ingress_rule" "backend_lb" {
@@ -30,6 +32,7 @@ resource "aws_vpc_security_group_egress_rule" "backend_all" {
   security_group_id = aws_security_group.backend.id
   ip_protocol       = "all"
   cidr_ipv4         = "0.0.0.0/0"
+  description       = "All"
 }
 
 # Load balancer
@@ -44,6 +47,7 @@ resource "aws_vpc_security_group_ingress_rule" "lb_icmp" {
   from_port         = -1
   to_port           = -1
   cidr_ipv4         = "0.0.0.0/0"
+  description       = "ICMP"
 }
 
 resource "aws_vpc_security_group_ingress_rule" "lb_http" {
@@ -52,6 +56,7 @@ resource "aws_vpc_security_group_ingress_rule" "lb_http" {
   from_port         = 80
   to_port           = 80
   cidr_ipv4         = "0.0.0.0/0"
+  description       = "HTTP"
 }
 
 resource "aws_vpc_security_group_ingress_rule" "lb_https" {
@@ -60,12 +65,14 @@ resource "aws_vpc_security_group_ingress_rule" "lb_https" {
   from_port         = 443
   to_port           = 443
   cidr_ipv4         = "0.0.0.0/0"
+  description       = "HTTPS"
 }
 
 resource "aws_vpc_security_group_egress_rule" "lb_all" {
   security_group_id = aws_security_group.lb.id
   ip_protocol       = "all"
   cidr_ipv4         = "0.0.0.0/0"
+  description       = "All"
 }
 
 # Database
@@ -78,4 +85,5 @@ resource "aws_vpc_security_group_ingress_rule" "db_backend" {
   security_group_id            = aws_security_group.db.id
   ip_protocol                  = "all"
   referenced_security_group_id = aws_security_group.backend.id
+  description                  = "All"
 }

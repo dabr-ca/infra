@@ -41,8 +41,6 @@ resource "aws_security_group" "lb" {
 resource "aws_vpc_security_group_ingress_rule" "lb_icmp" {
   security_group_id = aws_security_group.lb.id
   ip_protocol       = "icmp"
-  from_port         = -1
-  to_port           = -1
   cidr_ipv4         = "0.0.0.0/0"
 }
 

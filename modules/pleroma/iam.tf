@@ -34,7 +34,10 @@ data "aws_iam_policy_document" "main" {
   }
   statement {
     actions = [
-      "s3:*"
+      "s3:ListBucket",
+      "s3:PutObject",
+      "s3:GetObject",
+      "s3:DeleteObject",
     ]
     resources = [
       aws_s3_bucket.main.arn,

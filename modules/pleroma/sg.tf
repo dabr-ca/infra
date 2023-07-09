@@ -23,16 +23,12 @@ resource "aws_vpc_security_group_ingress_rule" "backend_mosh" {
 resource "aws_vpc_security_group_ingress_rule" "backend_lb" {
   security_group_id            = aws_security_group.backend.id
   ip_protocol                  = "all"
-  from_port                    = 0
-  to_port                      = 0
   referenced_security_group_id = aws_security_group.lb.id
 }
 
 resource "aws_vpc_security_group_egress_rule" "backend_all" {
   security_group_id = aws_security_group.backend.id
   ip_protocol       = "all"
-  from_port         = 0
-  to_port           = 0
   cidr_ipv4         = "0.0.0.0/0"
 }
 
@@ -69,8 +65,6 @@ resource "aws_vpc_security_group_ingress_rule" "lb_https" {
 resource "aws_vpc_security_group_egress_rule" "lb_all" {
   security_group_id = aws_security_group.lb.id
   ip_protocol       = "all"
-  from_port         = 0
-  to_port           = 0
   cidr_ipv4         = "0.0.0.0/0"
 }
 
@@ -83,7 +77,5 @@ resource "aws_security_group" "db" {
 resource "aws_vpc_security_group_ingress_rule" "db_backend" {
   security_group_id            = aws_security_group.db.id
   ip_protocol                  = "all"
-  from_port                    = 0
-  to_port                      = 0
   referenced_security_group_id = aws_security_group.backend.id
 }

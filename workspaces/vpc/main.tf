@@ -6,7 +6,8 @@ locals {
 }
 
 module "vpc" {
-  source = "../../modules/vpc"
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "4.0.2"
 
   name = local.name
   cidr = local.cidr_block
@@ -15,9 +16,9 @@ module "vpc" {
   private_subnets = local.subnet_groups[0]
   public_subnets  = local.subnet_groups[1]
 
-  enable_nat_gateway            = false
-  single_nat_gateway            = true
-  manage_default_security_group = true
+  enable_nat_gateway      = false
+  single_nat_gateway      = true
+  map_public_ip_on_launch = true
 }
 
 resource "aws_key_pair" "tarball" {

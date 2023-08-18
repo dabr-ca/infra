@@ -25,5 +25,5 @@ resource "aws_route53_record" "spf" {
   name    = aws_ses_domain_identity.main.domain
   type    = "TXT"
   ttl     = 600
-  records = ["v=spf1 include:amazonses.com -all"]
+  records = [var.domain_spf_record]
 }

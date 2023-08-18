@@ -61,3 +61,9 @@ variable "rds_allocated_storage" {
   type    = number
   default = 20
 }
+
+variable "domain_spf_record" {
+  description = "Customize domain SPF record. By default only SES are allowed to send mails from the domain."
+  type        = string
+  default     = "v=spf1 include:amazonses.com -all"
+}

@@ -20,4 +20,6 @@ module "pleroma" {
   rds_instance_class    = "db.m6g.large"
   rds_storage_type      = "gp3"
   rds_allocated_storage = 25
+
+  domain_spf_record = "v=spf1 include:amazonses.com include:spf.messagingengine.com -all"
 }

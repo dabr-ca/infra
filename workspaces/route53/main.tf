@@ -1,6 +1,14 @@
+locals {
+  domain = "dabr.ca"
+}
+
+resource "aws_route53_zone" "main" {
+  name = local.domain
+}
+
 # Set up MX to receive emails
 resource "aws_route53_record" "mx" {
-  zone_id = data.aws_route53_zone.main.id
+  zone_id = aws_route53_zone.main.id
 
   name = local.domain
   type = "MX"
@@ -11,14 +19,9 @@ resource "aws_route53_record" "mx" {
   ]
 }
 
-moved {
-  from = aws_route53_record.google_domains_mx
-  to   = aws_route53_record.mx
-}
-
 # Status page
 resource "aws_route53_record" "status" {
-  zone_id = data.aws_route53_zone.main.id
+  zone_id = aws_route53_zone.main.id
 
   name    = "status.${local.domain}"
   type    = "CNAME"

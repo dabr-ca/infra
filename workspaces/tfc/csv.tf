@@ -1,5 +1,5 @@
 locals {
-  default_terraform_version = "1.2.9"
+  default_terraform_version = "1.5.5"
 
   csv = csvdecode(file("../../datasources/tfc/workspaces.csv"))
   workspaces = {

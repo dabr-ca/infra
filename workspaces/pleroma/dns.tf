@@ -11,6 +11,11 @@ resource "aws_route53_record" "mx" {
   ]
 }
 
+moved {
+  from = aws_route53_record.google_domains_mx
+  to   = aws_route53_record.mx
+}
+
 # Status page
 resource "aws_route53_record" "status" {
   zone_id = data.aws_route53_zone.main.id

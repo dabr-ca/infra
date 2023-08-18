@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.2.9"
+  required_version = ">= 1.5.5"
   cloud {
     organization = "dabr-ca"
     workspaces {

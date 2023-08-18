@@ -25,6 +25,11 @@ resource "aws_db_instance" "main" {
 
   username = local.postgres_username
   password = random_password.postgres.result
+
+  lifecycle {
+    # FIXME
+    ignore_changes = [engine_version]
+  }
 }
 
 locals {

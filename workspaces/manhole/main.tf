@@ -30,11 +30,3 @@ resource "aws_instance" "manhole" {
     ignore_changes = [ami]
   }
 }
-
-resource "aws_eip" "manhole" {
-  instance = aws_instance.manhole.id
-}
-
-output "manhole_address" {
-  value = aws_eip.manhole.public_ip
-}

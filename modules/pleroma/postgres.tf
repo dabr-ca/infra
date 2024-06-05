@@ -28,7 +28,7 @@ resource "aws_db_instance" "main" {
 
   lifecycle {
     # FIXME
-    ignore_changes = [engine_version]
+    ignore_changes = [engine_version, allocated_storage]
   }
 }
 

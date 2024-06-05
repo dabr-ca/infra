@@ -6,6 +6,68 @@ I hereby claim:
 
   * I am an admin of https://dabr.ca
   * I am wzyboy (https://keybase.io/wzyboy) on keybase.
+  * I have a public key with fingerprint 34C2 38A1 522D BD63 9B33  957B 8532 9745 B099 9CAB
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01168f2e1b2877c6c6013d03ecb213b801a17f5576419ccf6ae444adebe94359def40a",
+      "fingerprint": "34c238a1522dbd639b33957b85329745b0999cab",
+      "host": "keybase.io",
+      "key_id": "85329745b0999cab",
+      "kid": "01168f2e1b2877c6c6013d03ecb213b801a17f5576419ccf6ae444adebe94359def40a",
+      "uid": "9977be95ac45cc41069f690be38b6600",
+      "username": "wzyboy"
+    },
+    "service": {
+      "hostname": "dabr.ca",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1717554735,
+  "expire_in": 157680000,
+  "prev": "759176828d70996d50bad18c6a1ee15cfd2b5f1d30687ef30ac145705770e7d2",
+  "seqno": 29,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUj1oFEEY3ZgoeCAIwjUi6mhjOOP8z85ZWdhYRtDOdX6+vSxJds/dvcTziIUi
+WKgEQaKohbWKqQUjitgIgoWWglgJYmFhJzp7JJ2l0wzzvvfevO/jW901GbXa1+ja
+yfV7Dx5PvPtmozR5T0fIFn6IuiM0D+MLFjxUdTKfedRFmBAZpxSIpbFSTjqJCfOY
+gbOUMBtjYohKhVCSE+1cKg1wzo0HC5ozoT2kHBvUQWmW96Dsl1leB1vGHWWxIYJS
+b71k2jKmhbKxYFQrLizWWjtjg3CuqBpFCGdNBTNZEbDwSMbx/sH/z7kHYzutlQoV
+YRwXznGCpU6lxhZYbKXEuCFWUOZmEQJ7+dLQFkO00kEBW8ocNGNt+tise2PLGde4
+98uiLlyxEMC5uu5X3UZUD/tjF7DJpj6xWe7DAINiCcoqK3LUJYHp6qwxJIooIbhi
+ooPgYj8rIckaRuguxuE0/8BSsFRCk4DR2KswsFnpBbbGk9hJQwCIcKmnVqTEMyxj
+BSnDxhEuFBZKYVCeoqalC3mBulSHoKYXTKusl5t6UAJaaV0fTEXtVrSvfXCKv44f
+zR594e6zO6Otpdu+rdm4qLVz9xZyik1EP4pk+syHWzOD7pObL9eevb16483HQzuO
+nHt++MvGgVdXPk9Ev5PbX+Xynk8/zx9/uHdx9eyv6WNP7574s//7xvppd9lO/gU=
+=QPyp
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/wzyboy
+
+==================================================================
+
+==================================================================
+https://keybase.io/wzyboy
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://dabr.ca
+  * I am wzyboy (https://keybase.io/wzyboy) on keybase.
   * I have a public key with fingerprint CDEF 6ED1 A4C7 ADE1 D6AB  C4DB AE9C 2216 8EBA 0BDB
 
 To do so, I am signing this object:

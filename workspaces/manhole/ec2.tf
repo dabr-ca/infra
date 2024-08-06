@@ -44,3 +44,7 @@ data "cloudinit_config" "manhole" {
     content      = file("${path.module}/files/pg_dump.sh")
   }
 }
+
+output "ec2_public_addr" {
+  value = aws_instance.manhole.public_ip
+}

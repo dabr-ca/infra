@@ -1,0 +1,4 @@
+builds/
+*.tfstate
+*.tfstate.backup
+*.lock.hcl

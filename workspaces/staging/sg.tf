@@ -25,7 +25,7 @@ resource "aws_security_group" "db" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "db_vpc" {
-  security_group_id = aws_security_group.backend.id
+  security_group_id = aws_security_group.db.id
   ip_protocol       = "all"
   cidr_ipv4         = "10.0.0.0/8"
   description       = "All from VPC"

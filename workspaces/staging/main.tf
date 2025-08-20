@@ -29,7 +29,7 @@ resource "aws_instance" "main" {
 }
 
 resource "aws_db_instance" "main" {
-  snapshot_identifier = "rds:dabr-ca-2025-08-17-11-41"
+  snapshot_identifier = "rds:dabr-ca-2025-08-20-11-41"
 
   identifier_prefix      = local.slug
   instance_class         = "db.m6g.large"

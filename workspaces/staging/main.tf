@@ -22,10 +22,6 @@ resource "aws_instance" "main" {
   tags = {
     Name = local.slug
   }
-
-  lifecycle {
-    ignore_changes = [ami]
-  }
 }
 
 resource "aws_db_instance" "main" {
@@ -44,10 +40,6 @@ resource "aws_db_instance" "main" {
   apply_immediately   = true
   deletion_protection = false
   skip_final_snapshot = true
-
-  lifecycle {
-    ignore_changes = [password]
-  }
 }
 
 resource "aws_db_subnet_group" "main" {

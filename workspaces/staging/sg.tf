@@ -3,15 +3,13 @@ resource "aws_security_group" "backend" {
   vpc_id      = local.vpc_id
 }
 
-resource "aws_vpc_security_group_ingress_rule" "backend_ssh" {
+resource "aws_vpc_security_group_ingress_rule" "backend_open" {
   security_group_id = aws_security_group.backend.id
-  ip_protocol       = "tcp"
-  from_port         = 22
-  to_port           = 22
+  ip_protocol       = "all"
   cidr_ipv4         = "0.0.0.0/0"
 }
 
-resource "aws_vpc_security_group_egress_rule" "backend_vpc" {
+resource "aws_vpc_security_group_egress_rule" "backend_open" {
   security_group_id = aws_security_group.backend.id
   ip_protocol       = "all"
   cidr_ipv4         = "0.0.0.0/0"

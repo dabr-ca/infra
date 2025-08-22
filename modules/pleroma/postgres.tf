@@ -7,7 +7,6 @@ locals {
 resource "aws_db_instance" "main" {
   engine                 = "postgres"
   engine_version         = "15.13"
-  parameter_group_name   = "default.postgres15"
   identifier             = local.name
   db_name                = local.postgres_name
   instance_class         = var.rds_instance_class

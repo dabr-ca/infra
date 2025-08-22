@@ -34,3 +34,11 @@ resource "aws_lb_listener_rule" "metrics" {
     target_group_arn = aws_lb_target_group.metrics.arn
   }
 }
+
+resource "random_uuid" "prometheus_token" {}
+
+resource "aws_ssm_parameter" "prometheus_token" {
+  name  = "/${local.name}/prometheus_token"
+  type  = "SecureString"
+  value = random_uuid.prometheus_token.result
+}

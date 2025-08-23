@@ -42,3 +42,13 @@ resource "aws_ssm_parameter" "prometheus_token" {
   type  = "SecureString"
   value = random_uuid.prometheus_token.result
 }
+
+resource "aws_ssm_parameter" "grafana_cloud_token" {
+  name  = "/${local.name}/grafana_cloud_token"
+  type  = "SecureString"
+  value = "." # populate this value manually
+
+  lifecycle {
+    ignore_changes = [value]
+  }
+}

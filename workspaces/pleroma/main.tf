@@ -17,6 +17,8 @@ module "pleroma" {
   public_subnet_ids  = data.terraform_remote_state.vpc.outputs.subnet_ids.public[*]
   ec2_key_name       = "wzyboy@tarball"
 
+  ec2_instance_type = "c8g.large"
+
   rds_instance_class    = "db.m6g.large"
   rds_storage_type      = "gp3"
   rds_allocated_storage = 75

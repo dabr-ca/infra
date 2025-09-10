@@ -39,7 +39,7 @@ variable "public_subnet_ids" {
 
 variable "ec2_instance_type" {
   type    = string
-  default = "t3.micro"
+  default = "t4g.micro"
 }
 
 variable "ec2_key_name" {

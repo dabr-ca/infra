@@ -5,7 +5,7 @@ locals {
 
 resource "aws_instance" "main" {
   ami                  = data.aws_ami.ubuntu.id
-  instance_type        = "t3.micro"
+  instance_type        = "c8g.large"
   subnet_id            = "subnet-0e726f617fb3c913f"
   key_name             = "wzyboy@tarball"
   iam_instance_profile = "dabr-ca"
@@ -25,7 +25,7 @@ resource "aws_instance" "main" {
 }
 
 resource "aws_db_instance" "main" {
-  snapshot_identifier = "rds:dabr-ca-2025-08-20-11-41"
+  snapshot_identifier = "rds:dabr-ca-2025-09-10-11-41"
 
   identifier_prefix      = local.slug
   instance_class         = "db.m6g.large"
@@ -49,4 +49,8 @@ resource "aws_db_subnet_group" "main" {
     "subnet-00c785138e18d8f2b",
     "subnet-0ed0d3f0375c30694"
   ]
+}
+
+output "db_address" {
+  value = aws_db_instance.main.address
 }

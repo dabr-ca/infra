@@ -20,20 +20,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "backup" {
   bucket = aws_s3_bucket.backup.id
 
   rule {
-    id     = "ArchiveDatabaseDumps"
-    status = "Enabled"
-
-    filter {
-      prefix = local.pg_dump_prefix
-    }
-
-    transition {
-      days          = 30 # min = 30
-      storage_class = "STANDARD_IA"
-    }
-  }
-
-  rule {
     id     = "DeleteDatabaseDumps"
     status = "Enabled"
 
@@ -42,7 +28,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "backup" {
     }
 
     expiration {
-      days = 365
+      days = 30
     }
   }
 }

@@ -1,12 +1,13 @@
 # Offsite (non-AWS environment) backup of Pleroma media
 
-variable "main_bucket_name" {
+variable "bucket_suffix" {
   type        = string
-  description = "Name of the main bucket as rclone source, extracted from the output of pleroma module."
+  description = "Bucket suffix, extracted from the output of pleroma module."
 }
 
-data "aws_s3_bucket" "main" {
-  bucket = var.main_bucket_name
+data "aws_s3_bucket" "rclone" {
+  for_each = toset(["dabr-ca-${var.bucket_suffix}", "dabr-ca-backup-${var.bucket_suffix}"])
+  bucket   = each.key
 }
 
 data "aws_iam_policy_document" "rclone" {
@@ -20,18 +21,18 @@ data "aws_iam_policy_document" "rclone" {
     actions = [
       "s3:ListBucket",
     ]
-    resources = [data.aws_s3_bucket.main.arn]
+    resources = [for k in data.aws_s3_bucket.rclone : k.arn]
   }
   statement {
     actions = [
       "s3:GetObject"
     ]
-    resources = ["${data.aws_s3_bucket.main.arn}/*"]
+    resources = [for k in data.aws_s3_bucket.rclone : "${k.arn}/*"]
   }
 }
 
 resource "aws_iam_user" "rclone" {
-  name = "rclone-${data.aws_s3_bucket.main.bucket}"
+  name = "rclone-${var.bucket_suffix}"
 }
 
 resource "aws_iam_user_policy" "rclone" {

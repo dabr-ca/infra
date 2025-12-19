@@ -44,6 +44,18 @@ data "aws_iam_policy_document" "bucket_policy" {
   }
 }
 
+resource "aws_s3_bucket_cors_configuration" "main" {
+  bucket = aws_s3_bucket.main.id
+
+  cors_rule {
+    allowed_origins = ["*"]
+    allowed_methods = ["GET", "HEAD"]
+    allowed_headers = ["*"]
+    expose_headers  = ["ETag", "Content-Length", "Content-Type"]
+    max_age_seconds = 3600
+  }
+}
+
 resource "aws_ssm_parameter" "s3_bucket" {
   name  = "/${local.name}/s3_bucket"
   type  = "String"

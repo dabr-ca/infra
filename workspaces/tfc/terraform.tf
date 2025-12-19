@@ -5,11 +5,9 @@ terraform {
       version = "~> 0.39.0"
     }
   }
-
-  cloud {
-    organization = "dabr-ca"
-    workspaces {
-      name = "tfc"
-    }
+  backend "s3" {
+    bucket = "tfstates-fdf62903"
+    key    = "workspaces/tfc/terraform.tfstate"
+    region = "us-west-2"
   }
 }

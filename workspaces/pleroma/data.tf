@@ -1,16 +1,11 @@
 data "terraform_remote_state" "vpc" {
-  backend = "remote"
+  backend = "s3"
 
   config = {
-    organization = "dabr-ca"
-    workspaces = {
-      name = "vpc"
-    }
+    bucket = "tfstates-fdf62903"
+    key    = "workspaces/vpc/terraform.tfstate"
+    region = "us-west-2"
   }
-}
-
-data "aws_route53_zone" "main" {
-  name = local.domain
 }
 
 data "aws_lb_listener" "main_https" {

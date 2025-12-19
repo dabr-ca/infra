@@ -1,9 +1,8 @@
 terraform {
   required_version = ">= 1.5.5"
-  cloud {
-    organization = "dabr-ca"
-    workspaces {
-      name = "route53"
-    }
+  backend "s3" {
+    bucket = "tfstates-fdf62903"
+    key    = "workspaces/route53/terraform.tfstate"
+    region = "us-west-2"
   }
 }

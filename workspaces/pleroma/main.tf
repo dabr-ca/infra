@@ -25,3 +25,7 @@ module "pleroma" {
 
   domain_spf_record = "v=spf1 include:amazonses.com include:spf.messagingengine.com -all"
 }
+
+output "instance" {
+  value = module.pleroma.instance
+}

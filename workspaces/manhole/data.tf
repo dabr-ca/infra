@@ -1,9 +1,13 @@
-data "aws_ami" "ubuntu22" {
-  most_recent = true
-  owners      = ["099720109477"] # Canonical
+data "terraform_remote_state" "pleroma" {
+  backend = "s3"
 
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  config = {
+    bucket = "tfstates-fdf62903"
+    key    = "workspaces/pleroma/terraform.tfstate"
+    region = "us-west-2"
   }
+}
+
+data "aws_instance" "pleroma" {
+  instance_id = data.terraform_remote_state.pleroma.outputs.instance.id
 }

@@ -1,21 +1,10 @@
-locals {
-  name = "dabr-ca"
-}
-
-data "aws_instance" "main" {
-  filter {
-    name   = "tag:Name"
-    values = [local.name]
-  }
-}
-
 resource "aws_instance" "manhole" {
-  ami                    = data.aws_ami.ubuntu22.id
-  instance_type          = "t3.micro"
-  subnet_id              = data.aws_instance.main.subnet_id
-  key_name               = data.aws_instance.main.key_name
-  iam_instance_profile   = data.aws_instance.main.iam_instance_profile
-  vpc_security_group_ids = data.aws_instance.main.vpc_security_group_ids
+  ami                    = data.aws_instance.pleroma.ami
+  instance_type          = "t4g.micro"
+  subnet_id              = data.aws_instance.pleroma.subnet_id
+  key_name               = data.aws_instance.pleroma.key_name
+  iam_instance_profile   = data.aws_instance.pleroma.iam_instance_profile
+  vpc_security_group_ids = data.aws_instance.pleroma.vpc_security_group_ids
 
   # Run pg_dump on instance startup
   user_data_base64            = data.cloudinit_config.manhole.rendered
@@ -31,10 +20,6 @@ resource "aws_instance" "manhole" {
 
   tags = {
     Name = "manhole"
-  }
-
-  lifecycle {
-    ignore_changes = [ami]
   }
 }
 

@@ -36,9 +36,13 @@ data "aws_iam_policy_document" "main" {
     actions = [
       "s3:ListBucket",
       "s3:PutObject",
-      "s3:PutObjectAcl", # required by Ansible aws_s3 module
       "s3:GetObject",
       "s3:DeleteObject",
+      # the following are required by Ansible aws_s3 module
+      "s3:PutObjectAcl",
+      "s3:GetObjectTagging",
+      "s3:PutObjectTagging",
+      "s3:DeleteObjectTagging",
     ]
     resources = [
       aws_s3_bucket.main.arn,

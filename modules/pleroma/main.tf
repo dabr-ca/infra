@@ -21,6 +21,12 @@ resource "aws_instance" "main" {
   key_name             = data.aws_key_pair.main.key_name
   iam_instance_profile = aws_iam_instance_profile.main.name
 
+  # Keep IMDSv1 available until Pleroma's ex_aws is upgraded to >= 2.3.2.
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens   = "optional"
+  }
+
   vpc_security_group_ids = [aws_security_group.backend.id]
 
   root_block_device {
